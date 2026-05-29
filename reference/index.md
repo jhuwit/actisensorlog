@@ -5,7 +5,7 @@
 - [`acti_process_sensorlog()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_process_sensorlog.md)
   [`acti_check_duplicate_times()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_process_sensorlog.md)
   [`acti_calculate_distance()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_process_sensorlog.md)
-  : Process SensorLog Daa
+  : Process SensorLog Data
 - [`acti_sensorlog_process_time()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_sensorlog_process_time.md)
   : Process the Time data from SensorLog and Compare to an Expected
   Timezone

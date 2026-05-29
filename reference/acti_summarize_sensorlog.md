@@ -18,7 +18,8 @@ acti_summarize_distance_sensorlog(data)
 
 - data:
 
-  \`data.frame\` of the data, output from \[acti_process_sensorlog\]
+  A SensorLog-style \`data.frame\`, usually output from
+  \[acti_process_sensorlog\]
 
 - seconds:
 

@@ -1,6 +1,6 @@
-# Process SensorLog Daa
+# Process SensorLog Data
 
-Process SensorLog Daa
+Process SensorLog Data
 
 ## Usage
 
@@ -33,17 +33,17 @@ acti_calculate_distance(
 
 - data:
 
-  A \`data.frame\` from \[acti_read_sensorlog\]
+  A SensorLog-style \`data.frame\`
 
 - lat:
 
   Latitude of central point (e.g. home) to calculate distance. Set to
-  \`NULL\` if distnace not to be run.
+  \`NULL\` if distance should not be calculated.
 
 - lon:
 
   Longitude of central point (e.g. home) to calculate distance Set to
-  \`NULL\` if distnace not to be run.
+  \`NULL\` if distance should not be calculated.
 
 - dist_fun:
 
@@ -90,23 +90,24 @@ and \[acti_sensorlog_process_time\]
 ## Examples
 
 ``` r
-library(actiread)
-file = acti_example_sensorlog_file()
-#> Error in acti_example_sensorlog_file(): could not find function "acti_example_sensorlog_file"
-df = acti_read_sensorlog(file)
-#> Error in acti_read_sensorlog(file): could not find function "acti_read_sensorlog"
-head(df)
-#>                                               
-#> 1 function (x, df1, df2, ncp, log = FALSE)    
-#> 2 {                                           
-#> 3     if (missing(ncp))                       
-#> 4         .Call(C_df, x, df1, df2, log)       
-#> 5     else .Call(C_dnf, x, df1, df2, ncp, log)
-#> 6 }                                           
-result = acti_process_sensorlog(df, check_data = FALSE, tz = "GMT")
-#> Error in UseMethod("mutate"): no applicable method for 'mutate' applied to an object of class "function"
-out = acti_minute_sensorlog(result)
+sensorlog = suppressMessages(
+  actiread::acti_read_sensorlog(actiread::acti_example_sensorlog_file())
+)
+#> Error: 'acti_read_sensorlog' is not an exported object from 'namespace:actiread'
+sensorlog = dplyr::distinct(sensorlog, time, .keep_all = TRUE)
+#> Error: object 'sensorlog' not found
+result = acti_process_sensorlog(
+  sensorlog,
+  lat = 39.3,
+  lon = -76.6,
+  expected_timezone = "America/New_York",
+  check_data = FALSE
+)
+#> Error: object 'sensorlog' not found
+head(result)
 #> Error: object 'result' not found
-out = acti_summarize_sensorlog(result)
+minute = acti_minute_sensorlog(result)
+#> Error: object 'result' not found
+summary = acti_summarize_sensorlog(result)
 #> Error: object 'result' not found
 ```

@@ -20,7 +20,7 @@ acti_sensorlog_process_time(
 
 - data:
 
-  A \`data.frame\` from \[acti_read_sensorlog\]
+  A SensorLog-style \`data.frame\`
 
 - expected_timezone:
 
