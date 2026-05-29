@@ -16,29 +16,25 @@ License: GPL-3
 Depends: 
     R (>= 3.5)
 Suggests:
+    actiread,
     testthat,
-    utils,
     covr,
     knitr,
-    httr,
     rmarkdown
 Encoding: UTF-8
 VignetteBuilder: knitr
 Imports: 
     actibase,
-    actiread,
-    magrittr,
-    dplyr,
-    lubridate,
     assertthat,
-    purrr,
-    tibble,
-    rlang,
-    stats,
-    actimetrics
+    dplyr,
+    geosphere,
+    janitor,
+    lubridate,
+    lutz,
+    magrittr,
+    tidyr
 Remotes: 
   jhuwit/actibase,
-  jhuwit/actimetrics,
   jhuwit/actiread
 LazyData: true
 Config/roxygen2/version: 8.0.0

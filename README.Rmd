@@ -4,10 +4,10 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/jhuwit/actimetrics/branch/main/graph/badge.svg)](https://codecov.io/gh/jhuwit/actimetrics?branch=main)
+[![R-CMD-check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/jhuwit/actisensorlog/branch/main/graph/badge.svg)](https://codecov.io/gh/jhuwit/actisensorlog?branch=main)
 <!-- badges: end -->
-    
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -17,85 +17,97 @@ knitr::opts_chunk$set(
 )
 ```
 
-# actimetrics
+# actisensorlog
 
-`actimetrics` provides helpers for actigraphy preprocessing, summary
-statistics, count-based overlays, and MIMS-oriented processing.
+`actisensorlog` processes SensorLog and SensorLogger exports. The package
+focuses on timestamp normalization, distance calculations, duplicate-time
+checks, and daily summaries.
 
 Core entry points:
 
-- `calculate_measures()` for summary metrics such as AI, MAD, MIMS, and AC
-- `acti_calculate_counts()` and `acti_process()` for count and wear overlays
-- `mims_default_processing()` for the default MIMS preprocessing chain
-- `acti_calibrate()` for calibration through `agcounts` using the van Hees
-  method commonly implemented in `GGIR`
+- `acti_process_sensorlog()` for duplicate checking, home-distance
+  calculations, and timezone handling
+- `acti_sensorlog_process_time()` for parsing SensorLog timestamps
+- `acti_minute_sensorlog()` and `acti_summarize_sensorlog()` for minute and
+  daily summaries
 
 ## Installation
 
-You can install `actimetrics` from GitHub with:
+You can install `actisensorlog` from GitHub with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("remotes")
-remotes::install_github("jhuwit/actimetrics")
+remotes::install_github("jhuwit/actisensorlog")
 ```
 
 ## Quick Start
 
-```{r example}
-library(actibase)
-library(actiread)
-library(actimetrics)
-path <- actiread::acti_example_gt3x()
-data <- actiread::acti_read_gt3x(path, verbose = FALSE)
-```
+```{r sensorlog-example}
+library(actisensorlog)
 
-
-We can calculate minute-level Activity Counts using the `agcounts` package.
-
-```{r counts}
-counts <- acti_calculate_counts(data)
-counts
-get_transformations(counts)
-```
-
-From this, we can calculate wear flags for each minute according to the Choi or Troiano methods.
-
-```{r wear}
-wear = acti_calculate_nonwear(counts)
-get_transformations(wear)
-```
-
-We can then merge them so the counts have the wear flags:
-
-```{r join}
-result = dplyr::full_join(counts, wear, by = "time") %>%
-  dplyr::mutate(wear = ifelse(is.na(wear), FALSE, wear))
-get_transformations(result)
-```
-
-
-These functions are combined in `acti_process`, but the transformations are retained correctly:
-```{r acti_process}
-processed = acti_process(data)
-processed
-get_transformations(processed)
-```
-
-
-```{r}
-summary <- acti_calculate_measures(
-  data,
-  calculate_mims = FALSE,
-  calculate_ac = TRUE,
-  flag_data = FALSE
+sensorlog <- suppressMessages(
+  actiread::acti_read_sensorlog(actiread::acti_example_sensorlog_file())
 )
-processed <- mims_default_processing(data[1:6000, ])
+
+processed_sensorlog <- acti_process_sensorlog(
+  sensorlog,
+  lat = 39.3,
+  lon = -76.6,
+  expected_timezone = "America/New_York",
+  check_data = FALSE
+)
+
+minute_sensorlog <- acti_minute_sensorlog(processed_sensorlog)
+summary_sensorlog <- acti_summarize_sensorlog(processed_sensorlog)
 ```
 
-Calibration uses the van Hees method as implemented by `agcounts`, which is
-the same approach typically exposed through `GGIR`.
+The SensorLog example gains `distance`, `distance_traveled`, and
+`is_within_home` fields:
 
-```{r calibration}
-calibrated <- acti_calibrate(data)
-get_transformations(calibrated)
+```{r sensorlog-processed}
+head(processed_sensorlog)
+```
+
+The minute-level view fills missing minutes between observations:
+
+```{r sensorlog-minute}
+head(minute_sensorlog)
+```
+
+The daily summary collapses the data to a single row per date:
+
+```{r sensorlog-summary}
+summary_sensorlog
+```
+
+```{r sensorlogger-example}
+sensorlogger <- suppressMessages(
+  actiread::acti_read_sensorlogger_location(
+    actiread::acti_example_sensorlogger_location_file()
+  )
+)
+
+processed_sensorlogger <- acti_process_sensorlog(
+  sensorlogger,
+  lat = 39.3,
+  lon = -76.6,
+  expected_timezone = "America/New_York"
+)
+
+minute_sensorlogger <- acti_minute_sensorlog(processed_sensorlogger)
+summary_sensorlogger <- acti_summarize_sensorlog(processed_sensorlogger)
+```
+
+The packaged SensorLogger location example follows the same flow:
+
+```{r sensorlogger-processed}
+head(processed_sensorlogger)
+```
+
+```{r sensorlogger-minute}
+head(minute_sensorlogger)
+```
+
+```{r sensorlogger-summary}
+summary_sensorlogger
 ```

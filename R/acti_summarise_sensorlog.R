@@ -1,9 +1,9 @@
 #' Summarize SensorLog Data
 #'
-#' @param data `data.frame` of the data, output from [acti_process_sensorlog]
+#' @param data A SensorLog-style `data.frame`, usually output from
+#' [acti_process_sensorlog]
 #'
 #' @returns The `data.frame` with the summarized data for each date
-#' @import rlang
 #' @export
 acti_summarize_sensorlog = function(data) {
   if (!assertthat::has_name(data, "time")) {
@@ -60,10 +60,7 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
   }
   for (icol in c("accel_X", "accel_Y", "accel_Z", "is_within_home")) {
     if (!assertthat::has_name(data, icol)) {
-      data = data %>%
-        dplyr::mutate(
-          !!icol := NA_real_
-        )
+      data[[icol]] = NA_real_
     }
   }
 

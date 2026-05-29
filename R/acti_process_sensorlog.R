@@ -1,10 +1,10 @@
-#' Process SensorLog Daa
+#' Process SensorLog Data
 #'
-#' @param data A `data.frame` from [acti_read_sensorlog]
+#' @param data A SensorLog-style `data.frame`
 #' @param lat Latitude of central point (e.g. home) to calculate distance.
-#' Set to `NULL` if distnace not to be run.
+#' Set to `NULL` if distance should not be calculated.
 #' @param lon Longitude of central point (e.g. home) to calculate distance
-#' Set to `NULL` if distnace not to be run.
+#' Set to `NULL` if distance should not be calculated.
 #' @param dist_fun Distance function to pass to [geosphere::distm]
 #' @param expected_timezone Expected Timezone based on the latitude/longitude
 #' of the data based on the lat/lon values from SensorLog (
@@ -23,13 +23,20 @@
 #' including `apply_tz` and `tz`
 #' @export
 #' @examples
-#' library(actiread)
-#' file = acti_example_sensorlog_file()
-#' df = acti_read_sensorlog(file)
-#' head(df)
-#' result = acti_process_sensorlog(df, check_data = FALSE, tz = "GMT")
-#' out = acti_minute_sensorlog(result)
-#' out = acti_summarize_sensorlog(result)
+#' sensorlog = suppressMessages(
+#'   actiread::acti_read_sensorlog(actiread::acti_example_sensorlog_file())
+#' )
+#' sensorlog = dplyr::distinct(sensorlog, time, .keep_all = TRUE)
+#' result = acti_process_sensorlog(
+#'   sensorlog,
+#'   lat = 39.3,
+#'   lon = -76.6,
+#'   expected_timezone = "America/New_York",
+#'   check_data = FALSE
+#' )
+#' head(result)
+#' minute = acti_minute_sensorlog(result)
+#' summary = acti_summarize_sensorlog(result)
 #'
 acti_process_sensorlog = function(
     data,
