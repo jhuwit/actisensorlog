@@ -1,5 +1,27 @@
 testthat::skip_if_not_installed("actiread")
 
+test_that("actiread sensorlog helpers are re-exported", {
+  exported = c(
+    "acti_convert_sensorlogger_time",
+    "acti_example_sensorlog_file",
+    "acti_example_sensorlogger_file",
+    "acti_example_sensorlogger_location_file",
+    "acti_read_sensorlog",
+    "acti_read_sensorlogger",
+    "acti_read_sensorlogger_general",
+    "acti_read_sensorlogger_location",
+    "acti_rewrite_sensorlog_csv",
+    "acti_sensorlog_csv_colnames_mapping",
+    "acti_sensorlog_csv_spec",
+    "acti_sensorlogger_location_colnames_mapping",
+    "acti_sensorlogger_location_spec"
+  )
+
+  expect_true(all(exported %in% getNamespaceExports("actisensorlog")))
+  expect_true(is.function(acti_read_sensorlog))
+  expect_true(is.function(acti_read_sensorlogger_location))
+})
+
 test_that("sensorlog example data can be processed", {
   data = make_sensorlog_example()
 
