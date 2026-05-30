@@ -93,9 +93,7 @@ and \[acti_sensorlog_process_time\]
 sensorlog = suppressMessages(
   actiread::acti_read_sensorlog(actiread::acti_example_sensorlog_file())
 )
-#> Error: 'acti_read_sensorlog' is not an exported object from 'namespace:actiread'
 sensorlog = dplyr::distinct(sensorlog, time, .keep_all = TRUE)
-#> Error: object 'sensorlog' not found
 result = acti_process_sensorlog(
   sensorlog,
   lat = 39.3,
@@ -103,11 +101,20 @@ result = acti_process_sensorlog(
   expected_timezone = "America/New_York",
   check_data = FALSE
 )
-#> Error: object 'sensorlog' not found
 head(result)
-#> Error: object 'result' not found
+#> # A tibble: 6 × 19
+#>   file  time                index timestamp             lat   lon altitude speed
+#>   <chr> <dttm>              <dbl> <dttm>              <dbl> <dbl>    <dbl> <dbl>
+#> 1 /tmp… 2025-03-11 18:44:11     1 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> 2 /tmp… 2025-03-11 18:44:11     2 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> 3 /tmp… 2025-03-11 18:44:11     3 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> 4 /tmp… 2025-03-11 18:44:12     4 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> 5 /tmp… 2025-03-11 18:44:12     5 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> 6 /tmp… 2025-03-11 18:44:12     6 2025-03-11 18:44:07  39.3 -76.6     46.3    -1
+#> # ℹ 11 more variables: speed_accuracy <dbl>, accel_X <dbl>, accel_Y <dbl>,
+#> #   accel_Z <dbl>, lat_zero <lgl>, lon_zero <lgl>, distance <dbl>,
+#> #   is_within_home <lgl>, distance_traveled <dbl>, timezone_estimated <chr>,
+#> #   char_time <chr>
 minute = acti_minute_sensorlog(result)
-#> Error: object 'result' not found
 summary = acti_summarize_sensorlog(result)
-#> Error: object 'result' not found
 ```
