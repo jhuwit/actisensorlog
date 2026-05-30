@@ -32,6 +32,13 @@ A \`data.frame\` of data
 
 ``` r
 library(actiread)
+#> 
+#> Attaching package: ‘actiread’
+#> The following objects are masked from ‘package:actisensorlog’:
+#> 
+#>     acti_read_sensorlog, acti_read_sensorlogger,
+#>     acti_read_sensorlogger_general, acti_read_sensorlogger_location,
+#>     acti_rewrite_sensorlog_csv
 file = acti_example_sensorlog_file()
 df = acti_read_sensorlog(file)
 head(df)
