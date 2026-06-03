@@ -6,14 +6,14 @@ duplicate-time checks, and daily summaries.
 
 Core entry points:
 
-- [`acti_process_sensorlog()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_process_sensorlog.md)
+- [`acti_process_sensorlog()`](https://jhuwit.github.io/actisensorlog/reference/acti_process_sensorlog.md)
   for duplicate checking, home-distance calculations, and timezone
   handling
-- [`acti_sensorlog_process_time()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_sensorlog_process_time.md)
+- [`acti_sensorlog_process_time()`](https://jhuwit.github.io/actisensorlog/reference/acti_sensorlog_process_time.md)
   for parsing SensorLog timestamps
-- [`acti_minute_sensorlog()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_summarize_sensorlog.md)
+- [`acti_minute_sensorlog()`](https://jhuwit.github.io/actisensorlog/reference/acti_summarize_sensorlog.md)
   and
-  [`acti_summarize_sensorlog()`](http://johnmuschelli.com/SummarizedActigraphy/reference/acti_summarize_sensorlog.md)
+  [`acti_summarize_sensorlog()`](https://jhuwit.github.io/actisensorlog/reference/acti_summarize_sensorlog.md)
   for minute and daily summaries
 
 ## Installation

@@ -68,13 +68,6 @@ to try to fix any shifts with the data.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/muschellij2/actiread" class="external-link">actiread</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘actiread’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:actisensorlog’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     acti_read_sensorlog, acti_read_sensorlogger,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     acti_read_sensorlogger_general, acti_read_sensorlogger_location,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     acti_rewrite_sensorlog_csv</span>
 <span class="r-in"><span><span class="va">file</span> <span class="op">=</span> <span class="fu"><a href="acti_example_sensorlog_file.html">acti_example_sensorlog_file</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">df</span> <span class="op">=</span> <span class="fu">acti_read_sensorlog</span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
