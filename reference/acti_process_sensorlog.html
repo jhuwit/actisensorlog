@@ -58,7 +58,8 @@
 <span>  <span class="va">lat</span>,</span>
 <span>  <span class="va">lon</span>,</span>
 <span>  distance_cutoff <span class="op">=</span> <span class="fl">180</span>,</span>
-<span>  dist_fun <span class="op">=</span> <span class="fu">geosphere</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/geosphere/man/distVincentyEllipsoid.html" class="external-link">distVincentyEllipsoid</a></span></span>
+<span>  dist_fun <span class="op">=</span> <span class="fu">geosphere</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/geosphere/man/distVincentyEllipsoid.html" class="external-link">distVincentyEllipsoid</a></span>,</span>
+<span>  fast <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -113,6 +114,11 @@ including `apply_tz` and `tz`</p></dd>
 <dt id="arg-distance-cutoff">distance_cutoff<a class="anchor" aria-label="anchor" href="#arg-distance-cutoff"></a></dt>
 <dd><p>Distance in meters to consider within home,
 in meters</p></dd>
+
+
+<dt id="arg-fast">fast<a class="anchor" aria-label="anchor" href="#arg-fast"></a></dt>
+<dd><p>Calculate distance on the distinct latitude/longitude, not the
+full data.  Should be used unless some precision looks wrong.</p></dd>
 
 </dl></div>
     <div class="section level2">

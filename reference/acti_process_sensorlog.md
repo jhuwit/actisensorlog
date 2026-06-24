@@ -25,7 +25,8 @@ acti_calculate_distance(
   lat,
   lon,
   distance_cutoff = 180,
-  dist_fun = geosphere::distVincentyEllipsoid
+  dist_fun = geosphere::distVincentyEllipsoid,
+  fast = TRUE
 )
 ```
 
@@ -77,6 +78,11 @@ acti_calculate_distance(
 - distance_cutoff:
 
   Distance in meters to consider within home, in meters
+
+- fast:
+
+  Calculate distance on the distinct latitude/longitude, not the full
+  data. Should be used unless some precision looks wrong.
 
 ## Value
 
