@@ -1,14 +1,13 @@
 Type: Package
 Package: actisensorlog
-Title: Analyze SensorLog/SensorLogger Activity Data
-Version: 0.0.1
+Title: Summarize SensorLog/SensorLogger Activity Data
+Version: 0.1.0
 Authors@R: c(
     person(given = "John",
            family = "Muschelli",
            role = c("aut", "cre"),
            email = "muschellij2@gmail.com")
     )
-Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Provides functions for analyzing SensorLog 
     <https://sensorlog.berndthomas.net/> and SensorLogger 
     <https://www.tszheichoi.com/sensorlogger> data.
@@ -36,7 +35,6 @@ Imports:
     readr,
     tidyr
 Remotes: 
-  jhuwit/actibase,
   jhuwit/actiread
 LazyData: true
 Config/roxygen2/version: 8.0.0

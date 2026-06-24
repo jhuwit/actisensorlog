@@ -81,7 +81,7 @@ acti_process_sensorlog = function(
 #' @rdname acti_process_sensorlog
 #' @export
 acti_check_duplicate_times = function(data,
-                           remove_cols = c("file", "index")) {
+                                      remove_cols = c("file", "index")) {
   file = index = NULL
   rm(list = c("file", "index"))
   # make sure there are no duplicated times
@@ -95,22 +95,43 @@ acti_check_duplicate_times = function(data,
 #' @rdname acti_process_sensorlog
 #' @param distance_cutoff Distance in meters to consider within home,
 #' in meters
+#' @param fast Calculate distance on the distinct latitude/longitude, not the
+#' full data.  Should be used unless some precision looks wrong.
 #' @export
 acti_calculate_distance = function(
     data,
     lat,
     lon,
     distance_cutoff = 180,
-    dist_fun = geosphere::distVincentyEllipsoid) {
+    dist_fun = geosphere::distVincentyEllipsoid,
+    fast = TRUE) {
   stopifnot(!is.null(lat), !is.null(lon))
-  distance = geosphere::distm(
-    as.matrix(data[, c("lon", "lat")]),
-    c(lon, lat),
-    fun = dist_fun
-  )
+  if (fast) {
+    udata = data |>
+      dplyr::distinct(lon, lat)
+    distance = geosphere::distm(
+      as.matrix(udata),
+      c(lon, lat),
+      fun = dist_fun
+    )
 
-  stopifnot(is.matrix(distance) && ncol(distance) == 1)
-  data$distance = distance[, 1]
+    stopifnot(is.matrix(distance) && ncol(distance) == 1)
+    udata$distance = distance[,1]
+    data = data |>
+      dplyr::left_join(udata, by = c("lon", "lat"))
+  } else {
+    distance = geosphere::distm(
+      as.matrix(data[, c("lon", "lat")]),
+      c(lon, lat),
+      fun = dist_fun
+    )
+
+    stopifnot(is.matrix(distance) && ncol(distance) == 1)
+    data$distance = distance[, 1]
+  }
+  assertthat::assert_that(
+    is.numeric(distance_cutoff)
+  )
 
   assertthat::assert_that(
     is.numeric(distance_cutoff)
