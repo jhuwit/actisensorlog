@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">actisensorlog</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,18 +56,18 @@ higher values are higher levels of verbosity.</p></dd>
 
 
 <dt id="arg-robust">robust<a class="anchor" aria-label="anchor" href="#arg-robust"></a></dt>
-<dd><p>if `TRUE` then [rewrite_sensorlog_csv] is run on the data
+<dd><p>if <code>TRUE</code> then <a href="https://jhuwit.github.io/actiread/reference/acti_rewrite_sensorlog_csv.html" class="external-link">acti_rewrite_sensorlog_csv</a> is run on the data
 to try to fix any shifts with the data.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A `data.frame` of data</p>
+    <p>A <code>data.frame</code> of data</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/muschellij2/actiread" class="external-link">actiread</a></span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jhuwit.github.io/actiread/" class="external-link">actiread</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">file</span> <span class="op">=</span> <span class="fu"><a href="acti_example_sensorlog_file.html">acti_example_sensorlog_file</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">df</span> <span class="op">=</span> <span class="fu">acti_read_sensorlog</span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
