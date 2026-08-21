@@ -34,36 +34,37 @@ acti_calculate_distance(
 
 - data:
 
-  A SensorLog-style \`data.frame\`
+  A SensorLog-style `data.frame`
 
 - lat:
 
   Latitude of central point (e.g. home) to calculate distance. Set to
-  \`NULL\` if distance should not be calculated.
+  `NULL` if distance should not be calculated.
 
 - lon:
 
   Longitude of central point (e.g. home) to calculate distance Set to
-  \`NULL\` if distance should not be calculated.
+  `NULL` if distance should not be calculated.
 
 - dist_fun:
 
-  Distance function to pass to \[geosphere::distm\]
+  Distance function to pass to
+  [geosphere::distm](https://rdrr.io/pkg/geosphere/man/distm.html)
 
 - expected_timezone:
 
   Expected Timezone based on the latitude/longitude of the data based on
-  the lat/lon values from SensorLog ( e.g. \`"America/New_York"\`). Set
-  to \`NULL\` if not to be checked.
+  the lat/lon values from SensorLog ( e.g. `"America/New_York"`). Set to
+  `NULL` if not to be checked.
 
 - check_data:
 
-  should \[acti_check_duplicate_times\] be run?
+  should acti_check_duplicate_times be run?
 
 - remove_cols:
 
   columns to remove from duplicate checking in
-  \[acti_check_duplicate_times\]. Default is \`c("file", "index")\`
+  acti_check_duplicate_times. Default is `c("file", "index")`
 
 - verbose:
 
@@ -72,8 +73,9 @@ acti_calculate_distance(
 
 - ...:
 
-  additional arguments to pass to \[acti_sensorlog_process_time\],
-  including \`apply_tz\` and \`tz\`
+  additional arguments to pass to
+  [acti_sensorlog_process_time](https://jhuwit.github.io/actisensorlog/reference/acti_sensorlog_process_time.md),
+  including `apply_tz` and `tz`
 
 - distance_cutoff:
 
@@ -86,12 +88,12 @@ acti_calculate_distance(
 
 ## Value
 
-A \`data.frame\` of transformed data
+A `data.frame` of transformed data
 
 ## Note
 
-This calls \[acti_check_duplicate_times\], \[acti_calculate_distance\],
-and \[acti_sensorlog_process_time\]
+This calls acti_check_duplicate_times, acti_calculate_distance, and
+[acti_sensorlog_process_time](https://jhuwit.github.io/actisensorlog/reference/acti_sensorlog_process_time.md)
 
 ## Examples
 

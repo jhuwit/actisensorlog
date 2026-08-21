@@ -18,16 +18,16 @@ acti_summarize_distance_sensorlog(data)
 
 - data:
 
-  A SensorLog-style \`data.frame\`, usually output from
-  \[acti_process_sensorlog\]
+  A SensorLog-style `data.frame`, usually output from
+  [acti_process_sensorlog](https://jhuwit.github.io/actisensorlog/reference/acti_process_sensorlog.md)
 
 - seconds:
 
   integer of the number of seconds to summarize the data for the
   "minute" level. Usually 1 minute/60 seconds. For
-  \`acti_summarize_distance_sensorlog\`, summarization is done depending
+  `acti_summarize_distance_sensorlog`, summarization is done depending
   on how the data is grouped.
 
 ## Value
 
-The \`data.frame\` with the summarized data for each date
+The `data.frame` with the summarized data for each date

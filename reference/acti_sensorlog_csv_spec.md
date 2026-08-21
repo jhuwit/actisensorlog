@@ -1,6 +1,6 @@
 # SensorLog CSV parsing specification.
 
-Re-exported from \`actiread\`.
+Re-exported from `actiread`.
 
 ## Usage
 

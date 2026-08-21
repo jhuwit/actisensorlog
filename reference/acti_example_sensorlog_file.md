@@ -1,6 +1,6 @@
 # Example SensorLog file path.
 
-Re-exported from \`actiread\`.
+Re-exported from `actiread`.
 
 ## Usage
 

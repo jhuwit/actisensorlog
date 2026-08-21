@@ -69,37 +69,37 @@
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A SensorLog-style `data.frame`</p></dd>
+<dd><p>A SensorLog-style <code>data.frame</code></p></dd>
 
 
 <dt id="arg-lat">lat<a class="anchor" aria-label="anchor" href="#arg-lat"></a></dt>
 <dd><p>Latitude of central point (e.g. home) to calculate distance.
-Set to `NULL` if distance should not be calculated.</p></dd>
+Set to <code>NULL</code> if distance should not be calculated.</p></dd>
 
 
 <dt id="arg-lon">lon<a class="anchor" aria-label="anchor" href="#arg-lon"></a></dt>
 <dd><p>Longitude of central point (e.g. home) to calculate distance
-Set to `NULL` if distance should not be calculated.</p></dd>
+Set to <code>NULL</code> if distance should not be calculated.</p></dd>
 
 
 <dt id="arg-dist-fun">dist_fun<a class="anchor" aria-label="anchor" href="#arg-dist-fun"></a></dt>
-<dd><p>Distance function to pass to [geosphere::distm]</p></dd>
+<dd><p>Distance function to pass to <a href="https://rdrr.io/pkg/geosphere/man/distm.html" class="external-link">geosphere::distm</a></p></dd>
 
 
 <dt id="arg-expected-timezone">expected_timezone<a class="anchor" aria-label="anchor" href="#arg-expected-timezone"></a></dt>
 <dd><p>Expected Timezone based on the latitude/longitude
 of the data based on the lat/lon values from SensorLog (
-e.g. `"America/New_York"`).  Set to
-`NULL` if not to be checked.</p></dd>
+e.g. <code>"America/New_York"</code>).  Set to
+<code>NULL</code> if not to be checked.</p></dd>
 
 
 <dt id="arg-check-data">check_data<a class="anchor" aria-label="anchor" href="#arg-check-data"></a></dt>
-<dd><p>should [acti_check_duplicate_times] be run?</p></dd>
+<dd><p>should acti_check_duplicate_times be run?</p></dd>
 
 
 <dt id="arg-remove-cols">remove_cols<a class="anchor" aria-label="anchor" href="#arg-remove-cols"></a></dt>
 <dd><p>columns to remove from duplicate checking in
-[acti_check_duplicate_times].  Default is `c("file", "index")`</p></dd>
+acti_check_duplicate_times.  Default is <code>c("file", "index")</code></p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -108,8 +108,8 @@ higher values are higher levels of verbosity.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>additional arguments to pass to [acti_sensorlog_process_time],
-including `apply_tz` and `tz`</p></dd>
+<dd><p>additional arguments to pass to <a href="acti_sensorlog_process_time.html">acti_sensorlog_process_time</a>,
+including <code>apply_tz</code> and <code>tz</code></p></dd>
 
 
 <dt id="arg-distance-cutoff">distance_cutoff<a class="anchor" aria-label="anchor" href="#arg-distance-cutoff"></a></dt>
@@ -124,12 +124,12 @@ full data.  Should be used unless some precision looks wrong.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A `data.frame` of transformed data</p>
+    <p>A <code>data.frame</code> of transformed data</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>This calls [acti_check_duplicate_times], [acti_calculate_distance], and
-[acti_sensorlog_process_time]</p>
+    <p>This calls acti_check_duplicate_times, acti_calculate_distance, and
+<a href="acti_sensorlog_process_time.html">acti_sensorlog_process_time</a></p>
     </div>
 
     <div class="section level2">

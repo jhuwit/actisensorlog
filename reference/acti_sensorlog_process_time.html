@@ -55,30 +55,30 @@
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A SensorLog-style `data.frame`</p></dd>
+<dd><p>A SensorLog-style <code>data.frame</code></p></dd>
 
 
 <dt id="arg-expected-timezone">expected_timezone<a class="anchor" aria-label="anchor" href="#arg-expected-timezone"></a></dt>
 <dd><p>Expected Timezone based on the latitude/longitude
 of the data based on the lat/lon values from SensorLog (
-e.g. `"America/New_York"`).  Set to
-`NULL` if not to be checked.</p></dd>
+e.g. <code>"America/New_York"</code>).  Set to
+<code>NULL</code> if not to be checked.</p></dd>
 
 
 <dt id="arg-tz">tz<a class="anchor" aria-label="anchor" href="#arg-tz"></a></dt>
-<dd><p>timezone to project the data into.  Keeping as `GMT` and should
-have same value for `apply_tz` to agree (caution: always check data)
-with ActiGraph, passed to [lubridate::as_datetime].</p></dd>
+<dd><p>timezone to project the data into.  Keeping as <code>GMT</code> and should
+have same value for <code>apply_tz</code> to agree (caution: always check data)
+with ActiGraph, passed to <a href="https://lubridate.tidyverse.org/reference/as_date.html" class="external-link">lubridate::as_datetime</a>.</p></dd>
 
 
 <dt id="arg-apply-tz">apply_tz<a class="anchor" aria-label="anchor" href="#arg-apply-tz"></a></dt>
 <dd><p>Apply the timezone from the timezone shift from the timezone,
 e.g. "2025-03-11T14:44:11-04:00" becomes "2025-03-11T18:44:11" if
-`apply_tz = TRUE`, but "2025-03-11T14:44:11" if `apply_tz = FALSE`.</p></dd>
+<code>apply_tz = TRUE</code>, but "2025-03-11T14:44:11" if <code>apply_tz = FALSE</code>.</p></dd>
 
 
 <dt id="arg-check-data">check_data<a class="anchor" aria-label="anchor" href="#arg-check-data"></a></dt>
-<dd><p>if `TRUE` any duplicates for time are checked for.</p></dd>
+<dd><p>if <code>TRUE</code> any duplicates for time are checked for.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -87,12 +87,12 @@ higher values are higher levels of verbosity.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>additional arguments to pass to [lutz::tz_lookup_coords()]</p></dd>
+<dd><p>additional arguments to pass to <code><a href="http://andyteucher.ca/lutz/reference/tz_lookup_coords.html" class="external-link">lutz::tz_lookup_coords()</a></code></p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A `data.frame`</p>
+    <p>A <code>data.frame</code></p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

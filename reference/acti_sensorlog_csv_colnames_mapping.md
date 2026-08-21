@@ -1,6 +1,6 @@
 # SensorLog CSV column-name mapping.
 
-Re-exported from \`actiread\`.
+Re-exported from `actiread`.
 
 ## Usage
 
