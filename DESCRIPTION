@@ -1,7 +1,7 @@
 Type: Package
 Package: actisensorlog
 Title: Summarize SensorLog/SensorLogger Activity Data
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person(given = "John",
            family = "Muschelli",
@@ -13,7 +13,7 @@ Description: Provides functions for analyzing SensorLog
     <https://www.tszheichoi.com/sensorlogger> data.
 License: GPL-3
 Depends: 
-    R (>= 3.5)
+    R (>= 4.1.0)
 Suggests:
     testthat,
     covr,
@@ -30,12 +30,9 @@ Imports:
     janitor,
     lubridate,
     lutz,
-    magrittr,
     purrr,
     readr,
     tidyr
-Remotes: 
-  jhuwit/actiread
 LazyData: true
 Config/roxygen2/version: 8.0.0
 URL: https://github.com/jhuwit/actisensorlog, https://jhuwit.github.io/actisensorlog/

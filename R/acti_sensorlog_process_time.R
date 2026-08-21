@@ -35,30 +35,30 @@ acti_sensorlog_process_time = function(data,
     stopifnot(uest == expected_timezone)
   }
 
-  data = data %>%
+  data = data |>
     dplyr::mutate(
       char_time = as.character(time)
     )
 
 
-  data = data %>%
+  data = data |>
     dplyr::mutate(
       time = strip_hour_shift(time, max_index = 2L)
     )
   if (!apply_tz) {
-    data = data %>%
+    data = data |>
       dplyr::mutate(
         time = sub("\\s([+]|-).*", "", time)
       )
   }
 
-  data = data %>%
+  data = data |>
     dplyr::mutate(
       # use GMT to agree with ActiGraph
       time = as_datetime_safe(time, tz = tz),
     )
   if (assertthat::has_name(data, "timestamp")) {
-    data = data %>%
+    data = data |>
       dplyr::mutate(
         timestamp = as_datetime_safe(timestamp)
       )

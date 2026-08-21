@@ -60,11 +60,11 @@ acti_process_sensorlog = function(
                                    dist_fun = dist_fun,
                                    distance_cutoff = distance_cutoff)
   } else {
-    data = data %>%
+    data = data |>
       dplyr::mutate(distance = NA_real_,
                     is_within_home = NA)
   }
-  data = data %>%
+  data = data |>
     # define within home as 180 meters or whatever cutoff
     dplyr::mutate(
       # calculate distance traveled
@@ -140,7 +140,7 @@ acti_calculate_distance = function(
   # gets confused in mutate
   lat = long = NULL
   rm(list = c("lat", "lon"))
-  data = data %>%
+  data = data |>
     # define within home as 180 meters or whatever cutoff
     dplyr::mutate(
       is_within_home = distance <= distance_cutoff

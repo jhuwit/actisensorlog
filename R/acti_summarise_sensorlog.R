@@ -14,9 +14,9 @@ acti_summarize_sensorlog = function(data) {
   if (!assertthat::has_name(data, "date")) {
     data = acti_separate_times(data)
   }
-  data = data %>%
-    dplyr::group_by(date) %>%
-    acti_summarize_distance_sensorlog() %>%
+  data = data |>
+    dplyr::group_by(date) |>
+    acti_summarize_distance_sensorlog() |>
     dplyr::ungroup()
 
   data
@@ -47,13 +47,13 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
   unit = paste0(seconds, " second")
 
   if (!assertthat::has_name(data, "lat_zero")) {
-    data = data %>%
+    data = data |>
       dplyr::mutate(
         lat_zero = abs(lat) < 0.00001 | is.na(lat),
       )
   }
   if (!assertthat::has_name(data, "lon_zero")) {
-    data = data %>%
+    data = data |>
       dplyr::mutate(
         lon_zero = abs(lon) < 0.00001 | is.na(lon),
       )
@@ -65,14 +65,14 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
   }
 
   # summarising the data at a level
-  data = data %>%
+  data = data |>
     dplyr::mutate(
       time = lubridate::floor_date(time, unit = unit),
       vm = sqrt(accel_X^2 + accel_Y^2 + accel_Z^2),
       enmo = pmax(0, vm - 1)
-    ) %>%
+    ) |>
     # group by time (so must be individual files)
-    dplyr::group_by(time) %>%
+    dplyr::group_by(time) |>
     dplyr::summarise(
       max_speed = max(speed, na.rm = TRUE),
       dplyr::across(
@@ -87,13 +87,13 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
       lat_zero = all(lat_zero),
       lon_zero = all(lon_zero)
     )
-  data = data %>%
+  data = data |>
     dplyr::mutate(
       is_within_home = ifelse(n_is_within_home == 0,
                               NA, is_within_home)
-    ) %>%
+    ) |>
     dplyr::select(-n_is_within_home)
-  data = data %>%
+  data = data |>
     dplyr::mutate(in_sensorlog = TRUE)
 
   # join all the times - now it should be full
@@ -104,9 +104,9 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
   data = dplyr::full_join(
     data,
     full_time_df,
-    by = dplyr::join_by(time)) %>%
+    by = dplyr::join_by(time)) |>
     dplyr::arrange(time)
-  data = data %>%
+  data = data |>
     tidyr::replace_na(list(in_sensorlog = FALSE))
   data
 }
@@ -123,12 +123,12 @@ acti_summarize_distance_sensorlog = function(data) {
               "distance_traveled", "is_within_home")
   )
   if (!assertthat::has_name(data, "distance")) {
-    data = data %>%
+    data = data |>
       dplyr::mutate(
         distance = NA_real_
       )
   }
-  daily = data %>%
+  daily = data |>
     dplyr::summarise(
       n_minutes_with_distance = sum(!is.na(distance)),
       sum_distance = sum(distance, na.rm = TRUE),
@@ -142,9 +142,9 @@ acti_summarize_distance_sensorlog = function(data) {
       time_within_home = sum(is_within_home, na.rm = TRUE),
       time_outside_home = sum(!is_within_home, na.rm = TRUE),
       time_missing_home = sum(is.na(is_within_home), na.rm = TRUE)
-    ) %>%
+    ) |>
     dplyr::ungroup()
-  daily = daily %>%
+  daily = daily |>
     dplyr::mutate(
       sum_distance_traveled = dplyr::if_else(
         n_distance_traveled == 0,
