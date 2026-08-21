@@ -50,6 +50,9 @@ acti_process_sensorlog = function(
     ...,
     distance_cutoff = 180
 ) {
+  if (xor(is.null(lat), is.null(lon))) {
+    stop("lat and lon must either both be supplied or both be NULL")
+  }
   if (check_data) {
     data = acti_check_duplicate_times(data, remove_cols = remove_cols)
   }
@@ -106,6 +109,12 @@ acti_calculate_distance = function(
     dist_fun = geosphere::distVincentyEllipsoid,
     fast = TRUE) {
   stopifnot(!is.null(lat), !is.null(lon))
+  assertthat::assert_that(
+    is.numeric(distance_cutoff),
+    length(distance_cutoff) == 1L,
+    !is.na(distance_cutoff),
+    is.finite(distance_cutoff)
+  )
   if (fast) {
     udata = data |>
       dplyr::distinct(lon, lat)
@@ -129,13 +138,6 @@ acti_calculate_distance = function(
     stopifnot(is.matrix(distance) && ncol(distance) == 1)
     data$distance = distance[, 1]
   }
-  assertthat::assert_that(
-    is.numeric(distance_cutoff)
-  )
-
-  assertthat::assert_that(
-    is.numeric(distance_cutoff)
-  )
   # just being overly cautious in case lat/lon passed in
   # gets confused in mutate
   lat = long = NULL

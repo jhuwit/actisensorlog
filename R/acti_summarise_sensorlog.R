@@ -42,8 +42,16 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
               "speed", "time", "is_within_home", "distance_traveled",
               "lat_zero", "lon_zero", "n_is_within_home"))
   assertthat::assert_that(
-    is.numeric(seconds)
+    is.numeric(seconds),
+    length(seconds) == 1L,
+    !is.na(seconds),
+    is.finite(seconds),
+    seconds > 0,
+    seconds == as.integer(seconds)
   )
+  if (nrow(data) == 0L) {
+    return(dplyr::mutate(data, in_sensorlog = logical()))
+  }
   unit = paste0(seconds, " second")
 
   if (!assertthat::has_name(data, "lat_zero")) {
@@ -58,10 +66,13 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
         lon_zero = abs(lon) < 0.00001 | is.na(lon),
       )
   }
-  for (icol in c("accel_X", "accel_Y", "accel_Z", "is_within_home")) {
+  for (icol in c("speed", "accel_X", "accel_Y", "accel_Z")) {
     if (!assertthat::has_name(data, icol)) {
       data[[icol]] = NA_real_
     }
+  }
+  if (!assertthat::has_name(data, "is_within_home")) {
+    data$is_within_home = NA
   }
 
   # summarising the data at a level
@@ -74,7 +85,7 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
     # group by time (so must be individual files)
     dplyr::group_by(time) |>
     dplyr::summarise(
-      max_speed = max(speed, na.rm = TRUE),
+      max_speed = if (all(is.na(speed))) NA_real_ else max(speed, na.rm = TRUE),
       dplyr::across(
         dplyr::any_of(c("lat", "lon", "speed", "accel_X",
                         "accel_Y", "accel_Z", "distance")),
