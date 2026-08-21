@@ -33,7 +33,6 @@ Imports:
     purrr,
     readr,
     tidyr
-LazyData: true
 Config/roxygen2/version: 8.0.0
 URL: https://github.com/jhuwit/actisensorlog, https://jhuwit.github.io/actisensorlog/
 BugReports: https://github.com/jhuwit/actisensorlog/issues
