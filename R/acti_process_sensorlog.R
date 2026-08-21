@@ -7,7 +7,7 @@
 #' Set to `NULL` if distance should not be calculated.
 #' @param dist_fun Distance function to pass to [geosphere::distm]
 #' @param expected_timezone Expected Timezone based on the latitude/longitude
-#' of the data based on the lat/lon values from SensorLog (
+#' of the data based on the `lat`/`lon` values from SensorLog (
 #' e.g. `"America/New_York"`).  Set to
 #' `NULL` if not to be checked.
 #' @param check_data should [acti_check_duplicate_times] be run?

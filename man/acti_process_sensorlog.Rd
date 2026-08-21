@@ -42,7 +42,7 @@ Set to \code{NULL} if distance should not be calculated.}
 \item{dist_fun}{Distance function to pass to \link[geosphere:distm]{geosphere::distm}}
 
 \item{expected_timezone}{Expected Timezone based on the latitude/longitude
-of the data based on the lat/lon values from SensorLog (
+of the data based on the \code{lat}/\code{lon} values from SensorLog (
 e.g. \code{"America/New_York"}).  Set to
 \code{NULL} if not to be checked.}
 
