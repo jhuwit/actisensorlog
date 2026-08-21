@@ -31,31 +31,31 @@ acti_calculate_distance(
 )
 }
 \arguments{
-\item{data}{A SensorLog-style `data.frame`}
+\item{data}{A SensorLog-style \code{data.frame}}
 
 \item{lat}{Latitude of central point (e.g. home) to calculate distance.
-Set to `NULL` if distance should not be calculated.}
+Set to \code{NULL} if distance should not be calculated.}
 
 \item{lon}{Longitude of central point (e.g. home) to calculate distance
-Set to `NULL` if distance should not be calculated.}
+Set to \code{NULL} if distance should not be calculated.}
 
-\item{dist_fun}{Distance function to pass to [geosphere::distm]}
+\item{dist_fun}{Distance function to pass to \link[geosphere:distm]{geosphere::distm}}
 
 \item{expected_timezone}{Expected Timezone based on the latitude/longitude
 of the data based on the lat/lon values from SensorLog (
-e.g. `"America/New_York"`).  Set to
-`NULL` if not to be checked.}
+e.g. \code{"America/New_York"}).  Set to
+\code{NULL} if not to be checked.}
 
-\item{check_data}{should [acti_check_duplicate_times] be run?}
+\item{check_data}{should \link{acti_check_duplicate_times} be run?}
 
 \item{remove_cols}{columns to remove from duplicate checking in
-[acti_check_duplicate_times].  Default is `c("file", "index")`}
+\link{acti_check_duplicate_times}.  Default is \code{c("file", "index")}}
 
 \item{verbose}{print diagnostic messages.  Either logical or integer, where
 higher values are higher levels of verbosity.}
 
-\item{...}{additional arguments to pass to [acti_sensorlog_process_time],
-including `apply_tz` and `tz`}
+\item{...}{additional arguments to pass to \link{acti_sensorlog_process_time},
+including \code{apply_tz} and \code{tz}}
 
 \item{distance_cutoff}{Distance in meters to consider within home,
 in meters}
@@ -64,14 +64,14 @@ in meters}
 full data.  Should be used unless some precision looks wrong.}
 }
 \value{
-A `data.frame` of transformed data
+A \code{data.frame} of transformed data
 }
 \description{
 Process SensorLog Data
 }
 \note{
-This calls [acti_check_duplicate_times], [acti_calculate_distance], and
-[acti_sensorlog_process_time]
+This calls \link{acti_check_duplicate_times}, \link{acti_calculate_distance}, and
+\link{acti_sensorlog_process_time}
 }
 \examples{
 sensorlog = suppressMessages(

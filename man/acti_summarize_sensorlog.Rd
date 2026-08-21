@@ -16,16 +16,16 @@ acti_minute_sensorlog(data, seconds = 60L)
 acti_summarize_distance_sensorlog(data)
 }
 \arguments{
-\item{data}{A SensorLog-style `data.frame`, usually output from
-[acti_process_sensorlog]}
+\item{data}{A SensorLog-style \code{data.frame}, usually output from
+\link{acti_process_sensorlog}}
 
 \item{seconds}{integer of the number of seconds to summarize the data
 for the "minute" level. Usually 1 minute/60 seconds.  For
-`acti_summarize_distance_sensorlog`, summarization is done depending on how the
+\code{acti_summarize_distance_sensorlog}, summarization is done depending on how the
 data is grouped.}
 }
 \value{
-The `data.frame` with the summarized data for each date
+The \code{data.frame} with the summarized data for each date
 }
 \description{
 Summarize SensorLog Data

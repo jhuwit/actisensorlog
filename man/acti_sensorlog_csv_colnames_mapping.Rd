@@ -7,5 +7,5 @@
 acti_sensorlog_csv_colnames_mapping()
 }
 \description{
-Re-exported from `actiread`.
+Re-exported from \code{actiread}.
 }

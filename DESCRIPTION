@@ -34,5 +34,6 @@ Imports:
     readr,
     tidyr
 Config/roxygen2/version: 8.0.0
+Roxygen: list(markdown = TRUE)
 URL: https://github.com/jhuwit/actisensorlog, https://jhuwit.github.io/actisensorlog/
 BugReports: https://github.com/jhuwit/actisensorlog/issues

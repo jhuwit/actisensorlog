@@ -7,5 +7,5 @@
 acti_example_sensorlogger_location_file()
 }
 \description{
-Re-exported from `actiread`.
+Re-exported from \code{actiread}.
 }
