@@ -50,7 +50,7 @@
 <div class="section level1">
 <div class="page-header"><h1 id="actisensorlog">actisensorlog<a class="anchor" aria-label="anchor" href="#actisensorlog"></a>
 </h1></div>
-<p><code>actisensorlog</code> processes SensorLog and SensorLogger exports. The package focuses on timestamp normalization, distance calculations, duplicate-time checks, and daily summaries.</p>
+<p><code>actisensorlog</code> processes <a href="http://sensorlog.berndthomas.net/" class="external-link">SensorLog</a> and <a href="https://www.tszheichoi.com/sensorlogger" class="external-link">SensorLogger</a> exports. The package focuses on timestamp normalization, distance calculations, duplicate-time checks, and daily summaries.</p>
 <p>Core entry points:</p>
 <ul>
 <li>
@@ -90,13 +90,46 @@
 <span><span class="va">summary_sensorlog</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/acti_summarize_sensorlog.html">acti_summarize_sensorlog</a></span><span class="op">(</span><span class="va">processed_sensorlog</span><span class="op">)</span></span></code></pre></div>
 <p>The SensorLog example gains <code>distance</code>, <code>distance_traveled</code>, and <code>is_within_home</code> fields:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">processed_sensorlog</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">processed_sensorlog</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 19</span></span>
+<span><span class="co">#&gt;   file  time                index timestamp             lat   lon altitude speed</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 /var… 2025-03-11 18:44:11     1 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; 2 /var… 2025-03-11 18:44:11     2 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; 3 /var… 2025-03-11 18:44:11     3 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; 4 /var… 2025-03-11 18:44:12     4 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; 5 /var… 2025-03-11 18:44:12     5 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; 6 /var… 2025-03-11 18:44:12     6 2025-03-11 18:44:07  39.3 -76.6     46.3    -1</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: speed_accuracy &lt;dbl&gt;, accel_X &lt;dbl&gt;, accel_Y &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   accel_Z &lt;dbl&gt;, lat_zero &lt;lgl&gt;, lon_zero &lt;lgl&gt;, distance &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   is_within_home &lt;lgl&gt;, distance_traveled &lt;dbl&gt;, timezone_estimated &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   char_time &lt;chr&gt;</span></span></code></pre></div>
 <p>The minute-level view fills missing minutes between observations:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">minute_sensorlog</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">minute_sensorlog</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 16</span></span>
+<span><span class="co">#&gt;   time                max_speed   lat   lon speed accel_X accel_Y accel_Z</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2025-03-11 18:44:00        -1  39.3 -76.6    -1 -0.0178   0.964  0.0182</span></span>
+<span><span class="co">#&gt; 2 2025-03-11 18:45:00        -1  39.3 -76.6    -1 -0.0665   1.01   0.0577</span></span>
+<span><span class="co">#&gt; 3 2025-03-11 18:46:00        -1  39.3 -76.6    -1 -0.0547   1.00   0.0250</span></span>
+<span><span class="co">#&gt; 4 2025-03-11 18:47:00        -1  39.3 -76.6    -1 -0.0843   1.01   0.0450</span></span>
+<span><span class="co">#&gt; 5 2025-03-11 18:48:00        -1  39.3 -76.6    -1 -0.0808   1.01   0.0468</span></span>
+<span><span class="co">#&gt; 6 2025-03-11 18:49:00        -1  39.3 -76.6    -1 -0.0901   1.01   0.0411</span></span>
+<span><span class="co">#&gt; # ℹ 8 more variables: distance &lt;dbl&gt;, is_within_home &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   distance_traveled &lt;dbl&gt;, vm &lt;dbl&gt;, enmo &lt;dbl&gt;, lat_zero &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   lon_zero &lt;lgl&gt;, in_sensorlog &lt;lgl&gt;</span></span></code></pre></div>
 <p>The daily summary collapses the data to a single row per date:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">summary_sensorlog</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">summary_sensorlog</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 11</span></span>
+<span><span class="co">#&gt;   date       n_minutes_with_distance sum_distance max_distance</span></span>
+<span><span class="co">#&gt;   &lt;date&gt;                       &lt;int&gt;        &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2025-03-11                      12       10960.         913.</span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: n_minutes_with_distance_traveled &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   sum_distance_traveled &lt;dbl&gt;, mean_distance_traveled &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   n_distance_traveled &lt;int&gt;, time_within_home &lt;int&gt;, time_outside_home &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   time_missing_home &lt;int&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sensorlogger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span></span>
 <span>  <span class="fu">actiread</span><span class="fu">::</span><span class="fu"><a href="https://jhuwit.github.io/actiread/reference/acti_read_sensorlogger.html" class="external-link">acti_read_sensorlogger_location</a></span><span class="op">(</span></span>
@@ -110,16 +143,51 @@
 <span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.6</span>,</span>
 <span>  expected_timezone <span class="op">=</span> <span class="st">"America/New_York"</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; No duplicate combinations found of: time, seconds_elapsed, altitude, speed_accuracy, bearing_accuracy, lat, altitude_above_mean_sea_level, bearing, horizontal_accuracy, ... and 6 other variables</span></span>
 <span></span>
 <span><span class="va">minute_sensorlogger</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/acti_summarize_sensorlog.html">acti_minute_sensorlog</a></span><span class="op">(</span><span class="va">processed_sensorlogger</span><span class="op">)</span></span>
 <span><span class="va">summary_sensorlogger</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/acti_summarize_sensorlog.html">acti_summarize_sensorlog</a></span><span class="op">(</span><span class="va">processed_sensorlogger</span><span class="op">)</span></span></code></pre></div>
 <p>The packaged SensorLogger location example follows the same flow:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">processed_sensorlogger</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">processed_sensorlogger</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 21</span></span>
+<span><span class="co">#&gt;   time                seconds_elapsed altitude speed_accuracy bearing_accuracy</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;                        &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2025-03-11 17:44:51         -6.71       7.37             -1               -1</span></span>
+<span><span class="co">#&gt; 2 2025-03-11 17:44:58          0.0255     7.37             -1               -1</span></span>
+<span><span class="co">#&gt; 3 2025-03-11 17:44:58          0.0322     7.37             -1               -1</span></span>
+<span><span class="co">#&gt; 4 2025-03-11 17:44:58          0.0660     7.37             -1               -1</span></span>
+<span><span class="co">#&gt; 5 2025-03-11 17:45:03          5.36       7.37             -1               -1</span></span>
+<span><span class="co">#&gt; 6 2025-03-11 17:45:04          6.05       7.37             -1               -1</span></span>
+<span><span class="co">#&gt; # ℹ 16 more variables: lat &lt;dbl&gt;, altitude_above_mean_sea_level &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   bearing &lt;dbl&gt;, horizontal_accuracy &lt;dbl&gt;, vertical_accuracy &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   lon &lt;dbl&gt;, speed &lt;dbl&gt;, lat_zero &lt;lgl&gt;, lon_zero &lt;lgl&gt;, file &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   cat_type_sensor &lt;chr&gt;, distance &lt;dbl&gt;, is_within_home &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   distance_traveled &lt;dbl&gt;, timezone_estimated &lt;chr&gt;, char_time &lt;chr&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">minute_sensorlogger</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">minute_sensorlogger</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 16</span></span>
+<span><span class="co">#&gt;   time                max_speed   lat   lon  speed accel_X accel_Y accel_Z</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2025-03-11 17:44:00     -1     39.3 -76.6 -1          NA      NA      NA</span></span>
+<span><span class="co">#&gt; 2 2025-03-11 17:45:00      3.04  39.3 -76.6  0.265      NA      NA      NA</span></span>
+<span><span class="co">#&gt; 3 2025-03-11 17:46:00     -1     39.3 -76.6 -1          NA      NA      NA</span></span>
+<span><span class="co">#&gt; 4 2025-03-11 17:47:00     NA     NA    NA   NA          NA      NA      NA</span></span>
+<span><span class="co">#&gt; 5 2025-03-11 17:48:00     -1     39.3 -76.6 -1          NA      NA      NA</span></span>
+<span><span class="co">#&gt; 6 2025-03-11 17:49:00     -1     39.3 -76.6 -1          NA      NA      NA</span></span>
+<span><span class="co">#&gt; # ℹ 8 more variables: distance &lt;dbl&gt;, is_within_home &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   distance_traveled &lt;dbl&gt;, vm &lt;dbl&gt;, enmo &lt;dbl&gt;, lat_zero &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   lon_zero &lt;lgl&gt;, in_sensorlog &lt;lgl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">summary_sensorlogger</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">summary_sensorlogger</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 11</span></span>
+<span><span class="co">#&gt;   date       n_minutes_with_distance sum_distance max_distance</span></span>
+<span><span class="co">#&gt;   &lt;date&gt;                       &lt;int&gt;        &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2025-03-11                      71       64169.         924.</span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: n_minutes_with_distance_traveled &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   sum_distance_traveled &lt;dbl&gt;, mean_distance_traveled &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   n_distance_traveled &lt;int&gt;, time_within_home &lt;int&gt;, time_outside_home &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   time_missing_home &lt;int&gt;</span></span></code></pre></div>
 </div>
 </div>
 
@@ -158,7 +226,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/gh/jhuwit/actisensorlog?branch=main" class="external-link"><img src="https://codecov.io/gh/jhuwit/actisensorlog/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/jhuwit/actisensorlog?branch=main" class="external-link"><img src="https://codecov.io/gh/jhuwit/actisensorlog/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 

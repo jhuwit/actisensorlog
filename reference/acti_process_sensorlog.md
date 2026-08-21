@@ -54,8 +54,8 @@ acti_calculate_distance(
 - expected_timezone:
 
   Expected Timezone based on the latitude/longitude of the data based on
-  the lat/lon values from SensorLog ( e.g. `"America/New_York"`). Set to
-  `NULL` if not to be checked.
+  the `lat`/`lon` values from SensorLog ( e.g. `"America/New_York"`).
+  Set to `NULL` if not to be checked.
 
 - check_data:
 
