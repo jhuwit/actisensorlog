@@ -1,9 +1,13 @@
-# SensorLogger location CSV parsing specification.
+# Read SensorLogger Data
 
-Re-exported from `actiread`.
+Read SensorLogger Data
 
 ## Usage
 
 ``` r
 acti_sensorlogger_location_spec()
 ```
+
+## Value
+
+A `data.frame` of data
