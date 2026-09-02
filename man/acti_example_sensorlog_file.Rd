@@ -2,10 +2,19 @@
 % Please edit documentation in R/actiread-reexports.R
 \name{acti_example_sensorlog_file}
 \alias{acti_example_sensorlog_file}
-\title{Example SensorLog file path.}
+\title{Activity/Actigraphy Example Data}
 \usage{
 acti_example_sensorlog_file()
 }
+\value{
+A file path
+}
 \description{
-Re-exported from \code{actiread}.
+Activity/Actigraphy Example Data
+}
+\examples{
+library(actiread)
+acti_example_gt3x()
+acti_example_cwa()
+acti_example_sensorlogger_file()
 }

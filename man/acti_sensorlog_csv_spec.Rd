@@ -2,10 +2,19 @@
 % Please edit documentation in R/actiread-reexports.R
 \name{acti_sensorlog_csv_spec}
 \alias{acti_sensorlog_csv_spec}
-\title{SensorLog CSV parsing specification.}
+\title{Read SensorLog Data}
 \usage{
 acti_sensorlog_csv_spec()
 }
+\value{
+A \code{data.frame} of data
+}
 \description{
-Re-exported from \code{actiread}.
+Read SensorLog Data
+}
+\examples{
+library(actiread)
+file = acti_example_sensorlog_file()
+df = acti_read_sensorlog(file)
+head(df)
 }

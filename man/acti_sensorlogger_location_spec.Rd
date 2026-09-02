@@ -2,10 +2,13 @@
 % Please edit documentation in R/actiread-reexports.R
 \name{acti_sensorlogger_location_spec}
 \alias{acti_sensorlogger_location_spec}
-\title{SensorLogger location CSV parsing specification.}
+\title{Read SensorLogger Data}
 \usage{
 acti_sensorlogger_location_spec()
 }
+\value{
+A \code{data.frame} of data
+}
 \description{
-Re-exported from \code{actiread}.
+Read SensorLogger Data
 }

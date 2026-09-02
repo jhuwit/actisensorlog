@@ -2,10 +2,19 @@
 % Please edit documentation in R/actiread-reexports.R
 \name{acti_sensorlog_csv_colnames_mapping}
 \alias{acti_sensorlog_csv_colnames_mapping}
-\title{SensorLog CSV column-name mapping.}
+\title{Read SensorLog Data}
 \usage{
 acti_sensorlog_csv_colnames_mapping()
 }
+\value{
+A \code{data.frame} of data
+}
 \description{
-Re-exported from \code{actiread}.
+Read SensorLog Data
+}
+\examples{
+library(actiread)
+file = acti_example_sensorlog_file()
+df = acti_read_sensorlog(file)
+head(df)
 }
