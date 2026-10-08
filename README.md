@@ -171,3 +171,8 @@ summary_sensorlogger
 #> #   n_distance_traveled <int>, time_within_home <int>, time_outside_home <int>,
 #> #   time_missing_home <int>
 ```
+
+## Funding
+
+This work was supported by NIH P30AG021334 and the Johns Hopkins Older
+Americans Independence Center (OAIC) Pepper Center grant.
