@@ -23,10 +23,11 @@ acti_summarize_distance_sensorlog(data)
 
 - seconds:
 
-  integer of the number of seconds to summarize the data for the
-  "minute" level. Usually 1 minute/60 seconds. For
-  `acti_summarize_distance_sensorlog`, summarization is done depending
-  on how the data is grouped.
+  number of seconds to summarize the data for the "minute" level, or a
+  string such as `"1 min"` (see
+  [`actibase::acti_standardize_epoch()`](https://jhuwit.github.io/actibase/reference/acti_standardize_epoch.html)).
+  Usually 1 minute/60 seconds. For `acti_summarize_distance_sensorlog`,
+  summarization is done depending on how the data is grouped.
 
 ## Value
 

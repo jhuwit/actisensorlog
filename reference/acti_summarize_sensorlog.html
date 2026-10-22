@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">actisensorlog</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +58,9 @@
 
 
 <dt id="arg-seconds">seconds<a class="anchor" aria-label="anchor" href="#arg-seconds"></a></dt>
-<dd><p>integer of the number of seconds to summarize the data
-for the "minute" level. Usually 1 minute/60 seconds.  For
+<dd><p>number of seconds to summarize the data for the "minute"
+level, or a string such as <code>"1 min"</code> (see
+<code><a href="https://jhuwit.github.io/actibase/reference/acti_standardize_epoch.html" class="external-link">actibase::acti_standardize_epoch()</a></code>). Usually 1 minute/60 seconds.  For
 <code>acti_summarize_distance_sensorlog</code>, summarization is done depending on how the
 data is grouped.</p></dd>
 

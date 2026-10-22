@@ -13,7 +13,7 @@ acti_process_sensorlog(
   expected_timezone = NULL,
   check_data = TRUE,
   remove_cols = c("file", "index"),
-  verbose = FALSE,
+  verbose = TRUE,
   ...,
   distance_cutoff = 180
 )
@@ -109,6 +109,9 @@ result = acti_process_sensorlog(
   expected_timezone = "America/New_York",
   check_data = FALSE
 )
+#> Warning: Using 'fast' method. This can cause inaccuracies in time zones
+#>   near boundaries away from populated ares. Use the 'accurate'
+#>   method if accuracy is more important than speed.
 head(result)
 #> # A tibble: 6 × 19
 #>   file  time                index timestamp             lat   lon altitude speed
