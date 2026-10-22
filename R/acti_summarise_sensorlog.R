@@ -29,8 +29,9 @@ acti_summarise_sensorlog = acti_summarize_sensorlog
 
 
 #' @rdname acti_summarize_sensorlog
-#' @param seconds integer of the number of seconds to summarize the data
-#' for the "minute" level. Usually 1 minute/60 seconds.  For
+#' @param seconds number of seconds to summarize the data for the "minute"
+#' level, or a string such as `"1 min"` (see
+#' [actibase::acti_standardize_epoch()]). Usually 1 minute/60 seconds.  For
 #' `acti_summarize_distance_sensorlog`, summarization is done depending on how the
 #' data is grouped.
 #' @export
@@ -41,18 +42,15 @@ acti_minute_sensorlog = function(data, seconds = 60L) {
   rm(list = c("lat", "lon", "accel_X", "accel_Y", "accel_Z", "vm", "enmo",
               "speed", "time", "is_within_home", "distance_traveled",
               "lat_zero", "lon_zero", "n_is_within_home"))
+  seconds = acti_standardize_epoch(seconds)
   assertthat::assert_that(
-    is.numeric(seconds),
-    length(seconds) == 1L,
-    !is.na(seconds),
-    is.finite(seconds),
-    seconds > 0,
-    seconds == as.integer(seconds)
+    assertthat::is.count(seconds),
+    msg = "`seconds` must be a whole number of seconds."
   )
   if (nrow(data) == 0L) {
     return(dplyr::mutate(data, in_sensorlog = logical()))
   }
-  unit = paste0(seconds, " second")
+  unit = acti_standardize_epoch(seconds, output = "character")
 
   if (!assertthat::has_name(data, "lat_zero")) {
     data = data |>

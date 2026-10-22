@@ -22,16 +22,18 @@ export(acti_summarise_sensorlog)
 export(acti_summarize_distance_sensorlog)
 export(acti_summarize_sensorlog)
 import(actibase)
-importFrom(actiread,acti_convert_sensorlogger_time)
-importFrom(actiread,acti_example_sensorlog_file)
-importFrom(actiread,acti_example_sensorlogger_file)
-importFrom(actiread,acti_example_sensorlogger_location_file)
-importFrom(actiread,acti_read_sensorlog)
-importFrom(actiread,acti_read_sensorlogger)
-importFrom(actiread,acti_read_sensorlogger_general)
-importFrom(actiread,acti_read_sensorlogger_location)
-importFrom(actiread,acti_rewrite_sensorlog_csv)
-importFrom(actiread,acti_sensorlog_csv_colnames_mapping)
-importFrom(actiread,acti_sensorlog_csv_spec)
-importFrom(actiread,acti_sensorlogger_location_colnames_mapping)
-importFrom(actiread,acti_sensorlogger_location_spec)
+importFrom(actiread,
+  acti_convert_sensorlogger_time,
+  acti_example_sensorlog_file,
+  acti_example_sensorlogger_file,
+  acti_example_sensorlogger_location_file,
+  acti_read_sensorlog,
+  acti_read_sensorlogger,
+  acti_read_sensorlogger_general,
+  acti_read_sensorlogger_location,
+  acti_rewrite_sensorlog_csv,
+  acti_sensorlog_csv_colnames_mapping,
+  acti_sensorlog_csv_spec,
+  acti_sensorlogger_location_colnames_mapping,
+  acti_sensorlogger_location_spec
+)

@@ -19,8 +19,9 @@ acti_summarize_distance_sensorlog(data)
 \item{data}{A SensorLog-style \code{data.frame}, usually output from
 \link{acti_process_sensorlog}}
 
-\item{seconds}{integer of the number of seconds to summarize the data
-for the "minute" level. Usually 1 minute/60 seconds.  For
+\item{seconds}{number of seconds to summarize the data for the "minute"
+level, or a string such as \code{"1 min"} (see
+\code{\link[actibase:acti_standardize_epoch]{actibase::acti_standardize_epoch()}}). Usually 1 minute/60 seconds.  For
 \code{acti_summarize_distance_sensorlog}, summarization is done depending on how the
 data is grouped.}
 }

@@ -10,7 +10,7 @@ acti_sensorlog_process_time(
   tz = "GMT",
   apply_tz = TRUE,
   check_data = TRUE,
-  verbose = FALSE,
+  verbose = TRUE,
   ...
 )
 }

@@ -17,7 +17,7 @@ acti_sensorlog_process_time = function(data,
                                        tz = "GMT",
                                        apply_tz = TRUE,
                                        check_data = TRUE,
-                                       verbose = FALSE,
+                                       verbose = TRUE,
                                        ...) {
 
   time = timestamp = NULL

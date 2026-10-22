@@ -87,3 +87,17 @@ test_that("minute summary tolerates missing accelerometer and speed values", {
   expect_equal(result$max_speed, 2)
   expect_true(is.na(result$vm))
 })
+
+test_that("minute summary accepts epoch strings", {
+  data = dplyr::tibble(
+    time = as.POSIXct("2025-03-11 14:44:11", tz = "UTC") + c(0, 70, 130),
+    lat = 0, lon = 0, speed = 1, distance_traveled = NA_real_
+  )
+  expect_equal(
+    actisensorlog::acti_minute_sensorlog(data, seconds = "1 min"),
+    actisensorlog::acti_minute_sensorlog(data, seconds = 60L)
+  )
+  # more than 60 seconds used to fail in lubridate::floor_date()
+  out = actisensorlog::acti_minute_sensorlog(data, seconds = 120L)
+  expect_equal(nrow(out), 2L)
+})

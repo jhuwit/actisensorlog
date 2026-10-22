@@ -46,7 +46,7 @@ acti_process_sensorlog = function(
     expected_timezone = NULL,
     check_data = TRUE,
     remove_cols = c("file", "index"),
-    verbose = FALSE,
+    verbose = TRUE,
     ...,
     distance_cutoff = 180
 ) {

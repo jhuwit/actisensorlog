@@ -1,7 +1,7 @@
 Type: Package
 Package: actisensorlog
 Title: Summarize 'SensorLog'/'SensorLogger' Activity Data
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person(given = "John",
            family = "Muschelli",
@@ -16,13 +16,13 @@ License: GPL-3
 Depends: 
     R (>= 4.1.0)
 Suggests:
-    testthat,
+    testthat (>= 3.0.0),
     covr,
     knitr,
     rmarkdown
 Encoding: UTF-8
 Imports: 
-    actibase,
+    actibase (>= 0.8.0),
     actiread,
     assertthat,
     dplyr,
@@ -30,10 +30,9 @@ Imports:
     janitor,
     lubridate,
     lutz,
-    purrr,
-    readr,
     tidyr
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.1
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/jhuwit/actisensorlog, https://jhuwit.github.io/actisensorlog/
 BugReports: https://github.com/jhuwit/actisensorlog/issues
+Config/testthat/edition: 3
