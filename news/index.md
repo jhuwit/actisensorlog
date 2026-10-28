@@ -2,6 +2,8 @@
 
 ## actisensorlog 0.3.0
 
+CRAN release: 2026-10-22
+
 - The SensorLog/SensorLogger readers and helpers from ‘actiread’
   ([`acti_read_sensorlog()`](https://jhuwit.github.io/actiread/reference/acti_read_sensorlog.html),
   [`acti_read_sensorlogger()`](https://jhuwit.github.io/actiread/reference/acti_read_sensorlogger.html),
