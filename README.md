@@ -6,6 +6,8 @@
 [![R-CMD-check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/jhuwit/actisensorlog/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jhuwit/actisensorlog?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/actisensorlog)](https://CRAN.R-project.org/package=actisensorlog)
 <!-- badges: end -->
 
 # actisensorlog
