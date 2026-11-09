@@ -11,8 +11,8 @@
 #' e.g. `"America/New_York"`).  Set to
 #' `NULL` if not to be checked.
 #' @param check_data should [acti_check_duplicate_times] be run?
-#' @param remove_cols columns to remove from duplicate checking in
-#' [acti_check_duplicate_times].  Default is `c("file", "index")`
+#' @param remove_cols Unused; kept for backward compatibility. Duplicate
+#' checking in [acti_check_duplicate_times] uses only the `time` column.
 #'
 #' @return A `data.frame` of transformed data
 #' @note This calls [acti_check_duplicate_times], [acti_calculate_distance], and
@@ -85,10 +85,7 @@ acti_process_sensorlog = function(
 #' @export
 acti_check_duplicate_times = function(data,
                                       remove_cols = c("file", "index")) {
-  file = index = NULL
-  rm(list = c("file", "index"))
   # make sure there are no duplicated times
-  dupes = janitor::get_dupes(data, -dplyr::any_of(remove_cols))
   stopifnot(anyDuplicated(data$time) == 0)
   data
 }

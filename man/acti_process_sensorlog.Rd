@@ -48,8 +48,8 @@ e.g. \code{"America/New_York"}).  Set to
 
 \item{check_data}{should \link{acti_check_duplicate_times} be run?}
 
-\item{remove_cols}{columns to remove from duplicate checking in
-\link{acti_check_duplicate_times}.  Default is \code{c("file", "index")}}
+\item{remove_cols}{Unused; kept for backward compatibility. Duplicate
+checking in \link{acti_check_duplicate_times} uses only the \code{time} column.}
 
 \item{verbose}{print diagnostic messages.  Either logical or integer, where
 higher values are higher levels of verbosity.}

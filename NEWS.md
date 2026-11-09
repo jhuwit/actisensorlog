@@ -1,3 +1,9 @@
+# actisensorlog (development version)
+
+* 'janitor' is no longer imported. `acti_check_duplicate_times()` computed
+  `janitor::get_dupes()` but never used the result; the duplicate-time check
+  itself is unchanged. `remove_cols` is kept for compatibility but is unused.
+
 # actisensorlog 0.3.0
 
 * The SensorLog/SensorLogger readers and helpers from 'actiread'

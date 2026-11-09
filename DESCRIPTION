@@ -27,7 +27,6 @@ Imports:
     assertthat,
     dplyr,
     geosphere,
-    janitor,
     lubridate,
     lutz,
     tidyr
