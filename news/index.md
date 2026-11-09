@@ -1,5 +1,14 @@
 # Changelog
 
+## actisensorlog (development version)
+
+- ‘janitor’ is no longer imported.
+  [`acti_check_duplicate_times()`](https://jhuwit.github.io/actisensorlog/reference/acti_process_sensorlog.md)
+  computed
+  [`janitor::get_dupes()`](https://sfirke.github.io/janitor/reference/get_dupes.html)
+  but never used the result; the duplicate-time check itself is
+  unchanged. `remove_cols` is kept for compatibility but is unused.
+
 ## actisensorlog 0.3.0
 
 CRAN release: 2026-10-22

@@ -63,8 +63,8 @@ acti_calculate_distance(
 
 - remove_cols:
 
-  columns to remove from duplicate checking in
-  acti_check_duplicate_times. Default is `c("file", "index")`
+  Unused; kept for backward compatibility. Duplicate checking in
+  acti_check_duplicate_times uses only the `time` column.
 
 - verbose:
 
